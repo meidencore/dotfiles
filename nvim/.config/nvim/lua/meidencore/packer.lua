@@ -2,7 +2,8 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+return require('packer').startup({
+function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use {
@@ -34,4 +35,8 @@ return require('packer').startup(function(use)
   }
 
 use ('ThePrimeagen/vim-be-good')
-end)
+end,
+config = {
+    clone_timeout = 60000000 
+  }
+})
