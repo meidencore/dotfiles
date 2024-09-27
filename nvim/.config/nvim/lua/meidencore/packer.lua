@@ -2,8 +2,7 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup({
-function(use)
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use {
@@ -30,13 +29,12 @@ function(use)
 		  {'neovim/nvim-lspconfig'},
 		  {'hrsh7th/nvim-cmp'},
 		  {'hrsh7th/cmp-nvim-lsp'},
+          {'saadparwaiz1/cmp_luasnip'},
 		  {'L3MON4D3/LuaSnip'},
 	  }
   }
 
-use ('ThePrimeagen/vim-be-good')
-end,
-config = {
-    clone_timeout = 60000000 
-  }
-})
+  use {'mhartington/formatter.nvim'}
+  use ('ThePrimeagen/vim-be-good')
+end
+)
