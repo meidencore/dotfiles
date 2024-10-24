@@ -16,8 +16,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local lsp = require('lsp-zero')
--- lsp.preset("recomended")
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
@@ -31,11 +29,30 @@ require('mason-lspconfig').setup({
         capabilities = lsp_capabilities,
       })
     end,
+    lua_ls = function()
+      require('lspconfig').lua_ls.setup({
+        capabilities = lsp_capabilities,
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT'
+            },
+            diagnostics = {
+              globals = {'vim'},
+            },
+            workspace = {
+              library = {
+                vim.env.VIMRUNTIME,
+              }
+            }
+          }
+        }
+      })
+    end,
   }
 })
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
