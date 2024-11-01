@@ -1,7 +1,7 @@
 -- Utilities for creating configurations
 local util = require "formatter.util"
 
-function format_prettier()
+local function format_prettier()
    return {
      exe = "prettier",
      args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
@@ -22,6 +22,17 @@ require("formatter").setup {
       typescriptreact = { format_prettier },
       javascript = { format_prettier },
       javascriptreact = { format_prettier },
+      cs = { 
+        function()
+          return {
+            exe = "dotnet",
+            args = {
+              "csharpier",
+            },
+            stdin = true,
+          }
+        end
+      },
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
     ["*"] = {
@@ -31,7 +42,10 @@ require("formatter").setup {
     }
   },
   try_node_modules = true,
+
 }
+
+
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
@@ -40,4 +54,3 @@ autocmd("BufWritePost", {
 	group = "__formatter__",
 	command = ":FormatWrite",
 })
-   

@@ -122,6 +122,10 @@ symbol = ""
 style = "bg:teal"
 format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
 
+[dotnet]
+style="bg:teal"
+format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
+
 [c]
 symbol = " "
 style = "bg:teal"
