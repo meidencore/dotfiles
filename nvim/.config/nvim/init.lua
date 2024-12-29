@@ -108,6 +108,11 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- My Customs binds
+-- Sourcing
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "[S]ource current file" })
+vim.keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "[S]ource current line" })
+vim.keymap.set("v", "<leader>x", ":lua<CR>", { desc = "[S]ource current selection" })
+
 -- Move selecteds lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
