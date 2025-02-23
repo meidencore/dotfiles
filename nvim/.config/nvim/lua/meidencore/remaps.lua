@@ -9,7 +9,14 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "[P]roject [V]iew (Open E
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set(
+	"n",
+	"<leader>Q",
+	vim.diagnostic.setloclist,
+	{ desc = "Open diagnostic [Q]uickfix on an independent loclist" }
+)
+vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, { desc = "[O]pen [F]loat" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -65,3 +72,13 @@ vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[Y]ank to the system clipboard
 -- Delete to the void register
 vim.keymap.set("n", "<leader><leader>d", '"_d', { desc = "[D]elete to void" })
 vim.keymap.set("v", "<leader><leader>d", '"_d', { desc = "[D]elete to void" })
+
+-- QuickFix Navigation
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<M-q>", "<cmd>cclose<CR>")
+vim.keymap.set("n", "<M-o>", "<cmd>copen<CR>")
+-- Loclist Navigation
+vim.keymap.set("n", "<M-J>", "<cmd>lnext<CR>")
+vim.keymap.set("n", "<M-K>", "<cmd>lprev<CR>")
+vim.keymap.set("n", "<M-Q>", "<cmd>lclose<CR>")
