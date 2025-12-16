@@ -4,6 +4,7 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
+exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1
 exec --no-startup-id i3-msg 'workspace $ws1; exec /usr/bin/brave;'
 # i3 config file (v4)
 #
